@@ -26,5 +26,7 @@ int main(){
         printf("%ld  -%3o %ld %s %s %ld oct. %s %s \n", info.st_ino, info.st_mode, info.st_nlink, user->pw_name, groupe->gr_name
                                                 ,info.st_size, timeString, fichierCourant->d_name);
     }
+
+    closedir(repertoire);
     return EXIT_SUCCESS;
 }

@@ -3,6 +3,7 @@
 // Un équivalent de la commande ls -li
 
 #include "ex2.h"
+
 int main(){
     struct passwd *user;
     struct group *groupe;
@@ -27,6 +28,9 @@ int main(){
                                                 ,info.st_size, timeString, fichierCourant->d_name);
     }
 
-    closedir(repertoire);
+    if(closedir(repertoire) == -1){
+        fprintf(stderr,"Erreur closedir \n");
+        exit(EXIT_FAILURE);
+    }
     return EXIT_SUCCESS;
 }

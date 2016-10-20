@@ -7,7 +7,7 @@ int main(){
     struct passwd *user;
     struct group *groupe;
     struct tm * mtime;
-    char timeString[80];
+    char timeString[9];
     DIR *repertoire = opendir ("."); //Répertoire courant
     if(repertoire == NULL){
         fprintf(stderr, "Erreur dans l'ouverture du repertoire");
@@ -22,7 +22,7 @@ int main(){
         groupe = getgrgid(info.st_gid);
         time_t current_time= info.st_mtime;
         mtime = localtime(&current_time);
-        strftime(timeString,80,"%d %H:%M", mtime);
+        strftime(timeString,9,"%d %H:%M", mtime);
         printf("%ld  -%3o %ld %s %s %ld oct. %s %s \n", info.st_ino, info.st_mode, info.st_nlink, user->pw_name, groupe->gr_name
                                                 ,info.st_size, timeString, fichierCourant->d_name);
     }
